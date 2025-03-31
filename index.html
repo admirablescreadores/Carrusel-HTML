@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel de Imágenes</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f4; }
+        
+        .carousel-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .prev:hover, .next:hover { background: rgba(0, 0, 0, 0.8); }
+
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="https://drive.google.com/uc?export=view&id=1TKOCQCGd4BwUj4iMIDlknZzAZL1YJE2" alt="Imagen muestra - Carrusel HTML">
+            <img src="https://drive.google.com/uc?export=view&id=1TKOCQCGd4BwUj4iMIDlknZzAZL1YJE2" alt="Imagen muestra - Carrusel HTML">
+            <img src="https://drive.google.com/uc?export=view&id=1TKOCQCGd4BwUj4iMIDlknZzAZL1YJE2" alt="Imagen muestra - Carrusel HTML">
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll(".carousel img");
+        const totalSlides = slides.length;
+
+        function moveSlide(step) {
+            index = (index + step + totalSlides) % totalSlides;
+            document.querySelector(".carousel").style.transform = `translateX(${-index * 100}%)`;
+        }
+    </script>
+
+</body>
+</html>
