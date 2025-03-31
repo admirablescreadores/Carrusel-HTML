@@ -19,13 +19,11 @@
 
         .carousel {
             display: flex;
-            width: 100%; /* Doble del tamaño porque hay 2 imágenes */
             transition: transform 0.5s ease-in-out;
         }
 
         .carousel img {
-            width: 100%; /* Cada imagen ocupa el 100% del contenedor */
-            flex: 0 0 100%; /* Evita que las imágenes se achiquen */
+            width: 100%;
             border-radius: 10px;
         }
 
@@ -64,11 +62,10 @@
         let index = 0;
         const slides = document.querySelectorAll(".carousel img");
         const totalSlides = slides.length;
-        const carousel = document.querySelector(".carousel");
 
         function moveSlide(step) {
             index = (index + step + totalSlides) % totalSlides;
-            carousel.style.transform = `translateX(${-index * 100}%)`;
+            document.querySelector(".carousel").style.transform = translateX(${-index * 100}%);
         }
     </script>
 
